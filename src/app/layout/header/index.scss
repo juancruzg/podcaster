@@ -1,0 +1,15 @@
+.header{
+  border-bottom: 1px solid $color-gray;
+  padding: 1rem 0;
+  margin: 0 1.25rem;
+
+  &__title {
+    margin: 0;
+
+    &>a {
+      @include title-l;
+      @include text-semibold;
+      @include text-link; 
+    }
+  }
+}

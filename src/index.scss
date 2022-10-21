@@ -1,6 +1,12 @@
+@import './styles/mixins';
+@import './styles/constants';
+
+@import './app/layout/index.scss';
+@import './app/layout/header/index.scss';
+
 body {
   margin: 0;
-  font-family: Proxima Nova, -apple-system, Helvetica Neue, Helvetica, Roboto, Arial, sans-serif;
+  font-family: $font-family;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

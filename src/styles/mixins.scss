@@ -1,0 +1,41 @@
+@mixin base-font {
+  font-family: $font-family;
+  color: $color-primary-black;
+  font-weight: $font-weight-regular;
+  line-height: $line-height-m;
+}
+
+@mixin title-l {
+  @include base-font;
+  font-size: $title-font-size-m;
+  line-height: $line-height-xxl;
+}
+  
+// @mixin body-xs {
+//   @include base-font;
+//   font-size: $body-font-size-xs;
+//   line-height: $line-height-s;
+// }
+// @mixin body-s {
+//   @include base-font;
+//   font-size: $body-font-size-s;
+// }
+@mixin body-m {
+  @include base-font;
+  font-size: $body-font-size-m;
+  line-height: $line-height-l;
+}
+// @mixin body-l {
+//   @include base-font;
+//   font-size: $body-font-size-l;
+//   line-height: $line-height-xl;
+// }
+
+@mixin text-semibold {
+  font-weight: $font-weight-semibold;
+}
+
+@mixin text-link {
+  text-decoration: none;
+  color: $color-blue;
+}
