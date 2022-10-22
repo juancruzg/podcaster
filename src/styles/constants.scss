@@ -1,7 +1,12 @@
 // Palette
 $color-primary-black: rgb(0, 0, 0, .9);
-$color-gray: #808080;
+$color-gray: #AAAAAA;
+$color-silver: #DDDDDD;
 $color-blue: #0074d9;
+$color-orange: #FF851B;
+$color-red: #FF4136;
+$color-navy: #001f3f;
+$color-green: #2ECC40;
 
 // Fonts
 $font-family: Proxima Nova, -apple-system, Helvetica Neue, Helvetica, Roboto, Arial, sans-serif;
@@ -18,12 +23,14 @@ $title-font-size-l: 28px;
 $title-font-size-xl: 32px;
 
 // Font body sizes
+$body-font-size-xxs: 10px;
 $body-font-size-xs: 12px;
 $body-font-size-s: 14px;
 $body-font-size-m: 16px;
 $body-font-size-l: 18px;
 
 // Line heights
+$line-height-xs: 14px;
 $line-height-s: 16px;
 $line-height-m: 18px;
 $line-height-l: 20px;
