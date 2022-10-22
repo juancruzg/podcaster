@@ -1,8 +1,8 @@
-import React, { ReactEventHandler, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 export interface SearchboxProps {
   onSearch?: (value: string) => void;
-  onChange?: ReactEventHandler;
+  onChange?: (value: string) => void;
   placeholder?: string;
 }
 
@@ -35,7 +35,7 @@ export function Searchbox({ onChange, onSearch, placeholder }: SearchboxProps): 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
     // Execute change event from props.
     if (onChange) {
-      onChange(event);
+      onChange(event.target.value);
     }
 
     setSearchValue(event.target.value);

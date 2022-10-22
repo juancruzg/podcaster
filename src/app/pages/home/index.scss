@@ -15,15 +15,21 @@
     column-gap: 1rem;
     text-align: center;
 
-    &__card__title {
-      @include body-xs;
-      @include text-semibold;
-      text-transform: uppercase;
-    }
+    &__card {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
 
-    &__card__subtitle {
-      @include body-xs;
-      @include text-secondary;
+      &__title {
+        @include body-xs;
+        @include text-semibold;
+        text-transform: uppercase;
+      }
+
+      &__subtitle {
+        @include body-xs;
+        @include text-secondary;
+      }
     }
   }
 }
