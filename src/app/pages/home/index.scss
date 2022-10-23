@@ -1,8 +1,8 @@
 .home {
   &__search-bar {
     display: flex;
-    justify-content: right;
     align-items: center;
+    justify-content: center;
     column-gap: 1rem;
     padding: 1.75rem 0;
     margin-bottom: 5rem;
@@ -31,5 +31,14 @@
         @include text-secondary;
       }
     }
+  }
+}
+
+@include screen-breakpoint(small) {
+  .home__search-bar {
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    column-gap: 1rem;
   }
 }

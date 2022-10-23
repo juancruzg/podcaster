@@ -36,6 +36,7 @@ export function Home() {
           podcasts.map((podcast) => (
             <Card
               key={`${podcast.name}-${podcast.author}`}
+              href="#"
               image={{
                 src: podcast.imageURL,
                 alt: 'podcast-avatar',

@@ -1,3 +1,21 @@
-.main-content{
-  margin: 0 20rem;
+.main-content {
+  margin: 0;
+}
+
+@include screen-breakpoint(small) {
+  .main-content {
+    margin: 0 2rem;
+  }
+}
+
+@include screen-breakpoint(large) {
+  .main-content {
+    margin: 0 10rem;
+  }
+}
+
+@include screen-breakpoint(wide) {
+  .main-content {
+    margin: 0 20rem;
+  }
 }

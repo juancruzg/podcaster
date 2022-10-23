@@ -3,6 +3,10 @@
   padding: 0.125rem 1rem;
   transition: 0.3s;
 
+  &--link {
+    text-decoration: none;
+  }
+
   &__image {
     width: 7.5rem;
     height: 7.5rem;

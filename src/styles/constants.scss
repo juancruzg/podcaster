@@ -36,3 +36,11 @@ $line-height-m: 18px;
 $line-height-l: 20px;
 $line-height-xl: 22px;
 $line-height-xxl: 30px;
+
+// Breakpoints
+$screen-breakpoints: (
+  small: 360px,
+  medium: 500px,
+  large: 960px,
+  wide: 1200px
+);
