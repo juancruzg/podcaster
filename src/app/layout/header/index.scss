@@ -1,7 +1,7 @@
-.header{
+.header {
   border-bottom: 1px solid $color-gray;
   padding: 1rem 0;
-  margin: 0 1.25rem;
+  margin: 0;
 
   &__title {
     margin: 0;
@@ -11,5 +11,23 @@
       @include text-semibold;
       @include text-link; 
     }
+  }
+}
+
+@include screen-breakpoint(small) {
+  .header {
+    margin: 0 2rem;
+  }
+}
+
+@include screen-breakpoint(large) {
+  .header {
+    margin: 0 10rem;
+  }
+}
+
+@include screen-breakpoint(wide) {
+  .header {
+    margin: 0 20rem;
   }
 }

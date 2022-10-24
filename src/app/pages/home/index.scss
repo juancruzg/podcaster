@@ -1,0 +1,44 @@
+.home {
+  &__search-bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: 1rem;
+    padding: 1.75rem 0;
+    margin-bottom: 5rem;
+  }
+
+  &__podcast-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill,minmax(10rem, 1fr));
+    row-gap: 10rem;
+    column-gap: 1rem;
+    text-align: center;
+
+    &__card {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      &__title {
+        @include body-xs;
+        @include text-semibold;
+        text-transform: uppercase;
+      }
+
+      &__subtitle {
+        @include body-xs;
+        @include text-secondary;
+      }
+    }
+  }
+}
+
+@include screen-breakpoint(small) {
+  .home__search-bar {
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    column-gap: 1rem;
+  }
+}
