@@ -1,21 +1,28 @@
 import React, { useEffect, useState } from 'react';
 
 import { Card } from '../../components/card';
+import { ImageTypeEnum } from '../../enums/ImageTypeEnum';
 import { LevelEnum } from '../../enums/LevelEnum';
-import { Podcast } from '../../models/podcast';
+import { PodcastItem } from '../../models/podcastItem';
 import { getAllPodcasts } from '../../services/podcastService';
 import { Badge } from './components/badge';
 import { Searchbox } from './components/searchBox';
 
 export function Home() {
-  const [podcasts, setPodcasts] = useState<Podcast[]>();
+  const [podcasts, setPodcasts] = useState<PodcastItem[]>();
   const [count, setCount] = useState<number>(0);
 
   useEffect(() => {
-    getAllPodcasts().then((podcastsResponse) => {
-      setPodcasts(podcastsResponse.podcasts);
-      setCount(podcastsResponse.count);
-    });
+    // eslint-disable-next-line no-debugger
+    debugger;
+    getAllPodcasts()
+      .then((podcastsResponse) => {
+        setPodcasts(podcastsResponse.podcasts);
+        setCount(podcastsResponse.count);
+      })
+      .catch(() => {
+        // TODO: Handle error
+      });
   }, []);
 
   const handleSearch = (searchText: string) => {
@@ -36,8 +43,9 @@ export function Home() {
           podcasts.map((podcast) => (
             <Card
               key={`${podcast.name}-${podcast.author}`}
-              href="#"
+              href={`/podcast/${podcast.id}`}
               image={{
+                type: ImageTypeEnum.CIRCLE,
                 src: podcast.imageURL,
                 alt: 'podcast-avatar',
               }}

@@ -13,6 +13,24 @@
   line-height: $line-height-xxl;
 }
   
+@mixin body-l {
+  @include base-font;
+  font-size: $body-font-size-l;
+  line-height: $line-height-xl;
+}
+
+@mixin body-m {
+  @include base-font;
+  font-size: $body-font-size-m;
+  line-height: $line-height-l;
+}
+
+@mixin body-s {
+  @include base-font;
+  font-size: $body-font-size-s;
+  line-height: $line-height-xs;
+}
+
 @mixin body-xs {
   @include base-font;
   font-size: $body-font-size-xs;
@@ -23,12 +41,6 @@
   @include base-font;
   font-size: $body-font-size-xxs;
   line-height: $line-height-xs;
-}
-
-@mixin body-m {
-  @include base-font;
-  font-size: $body-font-size-m;
-  line-height: $line-height-l;
 }
 
 @mixin text-semibold {

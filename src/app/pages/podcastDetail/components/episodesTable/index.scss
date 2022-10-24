@@ -1,0 +1,31 @@
+$background-row-color: #f8f8f8;
+
+.episodes-table {
+  border-collapse: collapse;
+  width: 100%;
+
+  td>a {
+    @include text-link;
+  }
+
+  td,
+  th {
+    @include body-s;
+
+    border-bottom: 1px solid $color-silver;
+    text-align: left;
+    padding: 0.6rem;
+  }
+
+  td.duration {
+    text-align: center;
+  }
+
+  th {
+    @include text-semibold;
+  }
+
+  tbody>tr:nth-child(odd) {
+    background-color: $background-row-color;
+  }
+}

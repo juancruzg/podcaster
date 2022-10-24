@@ -3,6 +3,7 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 
 import { Card } from '../../../../app/components/card';
+import { ImageTypeEnum } from '../../../../app/enums/ImageTypeEnum';
 
 describe('Card', () => {
   let content: string;
@@ -22,11 +23,12 @@ describe('Card', () => {
     expect(screen.getByText('Test')).toBeInTheDocument();
   });
 
-  test('renders with an image', () => {
+  test('renders with an image as circle', () => {
     render(
       <Card
         image={{
           alt: imageAlt,
+          type: ImageTypeEnum.CIRCLE,
           src: imageURL,
         }}
       >
@@ -38,5 +40,26 @@ describe('Card', () => {
 
     expect(image).toBeInTheDocument();
     expect(image).toHaveProperty('src', 'https://test.com/test.png');
+    expect(screen.getByTestId('card-image-container')).toHaveClass('card__image--circle')
+  });
+
+  test('renders with an image as square', () => {
+    render(
+      <Card
+        image={{
+          alt: imageAlt,
+          type: ImageTypeEnum.SQUARE,
+          src: imageURL,
+        }}
+      >
+        {content}
+      </Card>,
+    );
+
+    const image = screen.getByAltText('alt-test');
+
+    expect(image).toBeInTheDocument();
+    expect(image).toHaveProperty('src', 'https://test.com/test.png');
+    expect(screen.getByTestId('card-image-container')).toHaveClass('card__image--square')
   });
 });
