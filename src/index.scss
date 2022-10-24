@@ -1,0 +1,23 @@
+@import './styles/mixins';
+@import './styles/constants';
+
+@import './app/components/card/index.scss';
+
+@import './app/layout/index.scss';
+@import './app/layout/header/index.scss';
+
+@import './app/pages/home/index.scss';
+@import './app/pages/home/components/searchBox/index.scss';
+@import './app/pages/home/components/badge/index.scss';
+
+body {
+  margin: 0;
+  font-family: $font-family;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}

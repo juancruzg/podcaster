@@ -1,0 +1,81 @@
+// Fonts
+
+@mixin base-font {
+  font-family: $font-family;
+  color: $color-primary-black;
+  font-weight: $font-weight-regular;
+  line-height: $line-height-m;
+}
+
+@mixin title-l {
+  @include base-font;
+  font-size: $title-font-size-l;
+  line-height: $line-height-xxl;
+}
+  
+@mixin body-xs {
+  @include base-font;
+  font-size: $body-font-size-xs;
+  line-height: $line-height-s;
+}
+
+@mixin body-xxs {
+  @include base-font;
+  font-size: $body-font-size-xxs;
+  line-height: $line-height-xs;
+}
+
+@mixin body-m {
+  @include base-font;
+  font-size: $body-font-size-m;
+  line-height: $line-height-l;
+}
+
+@mixin text-semibold {
+  font-weight: $font-weight-semibold;
+}
+
+@mixin text-link {
+  text-decoration: none;
+  color: $color-blue;
+}
+
+@mixin text-secondary {
+  color: $color-gray;
+}
+
+// Colors
+
+@mixin level-background-colors {
+  &--success {
+    background-color: $color-green;
+    color: white;
+  }
+  &--primary {
+    background-color: $color-blue;
+    color: white;
+  }
+  &--secondary {
+    background-color: $color-navy;
+    color: white;
+  }
+  &--error {
+    background-color: $color-red;
+    color: white;
+  }
+  &--warning {
+    background-color: $color-orange;
+    color: white;
+  }
+}
+
+// Breakpoints
+@mixin screen-breakpoint($name) {
+  @if not map-has-key($screen-breakpoints, $name) {
+    @warn 'Warning: `#{$name}` is not a valid breakpoint name.';
+  } @else {
+    @media screen and (min-width: map-get($screen-breakpoints, $name)) {
+      @content;
+    }
+  }
+}
