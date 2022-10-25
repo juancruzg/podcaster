@@ -6,9 +6,14 @@
 @import './app/layout/index.scss';
 @import './app/layout/header/index.scss';
 
+@import './app/pages/components/podcastSummaryCard/index.scss';
+
 @import './app/pages/home/index.scss';
 @import './app/pages/home/components/searchBox/index.scss';
 @import './app/pages/home/components/badge/index.scss';
+
+@import './app/pages/podcastDetail/index.scss';
+@import './app/pages/podcastDetail/components/episodesTable/index.scss';
 
 body {
   margin: 0;

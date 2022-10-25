@@ -1,0 +1,42 @@
+.podcast-summary {
+  &__separator {
+    margin: 0.5rem 0;
+    border: 1px solid $color-silver;
+  }
+
+  &__primary-detail {
+    padding: 0.5rem;
+
+    &__title {
+      @include body-m;
+      @include text-semibold;
+  
+      margin: 0 0 0.3rem 0;
+    }
+  
+    &__description {
+      @include body-s;
+  
+      font-style: italic;
+      margin: 0;
+    }
+  }
+
+  &__secondary-detail {
+    padding: 0.5rem 0 1rem 0;
+
+    &__title {
+      @include body-s;
+      @include text-semibold;
+  
+      margin: 0 0 0.6rem 0;
+    }
+  
+    &__description {
+      @include body-xs;
+  
+      font-style: italic;
+      margin: 0;
+    }
+  }
+}

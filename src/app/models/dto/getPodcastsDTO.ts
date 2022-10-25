@@ -13,6 +13,11 @@ export interface PodcastDTO {
   'im:artist': {
     label: string;
   };
+  id: {
+    attributes: {
+      'im:id': string;
+    };
+  };
 }
 
 export interface PodcastsDTO {
