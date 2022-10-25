@@ -1,6 +1,6 @@
-import { Podcast } from './podcast';
+import { PodcastItem } from './podcastItem';
 
 export interface GetPodcastsResponse {
-  podcasts: Podcast[];
+  podcasts: PodcastItem[];
   count: number;
 }
