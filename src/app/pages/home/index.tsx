@@ -13,8 +13,6 @@ export function Home() {
   const [count, setCount] = useState<number>(0);
 
   useEffect(() => {
-    // eslint-disable-next-line no-debugger
-    debugger;
     getAllPodcasts()
       .then((podcastsResponse) => {
         setPodcasts(podcastsResponse.podcasts);

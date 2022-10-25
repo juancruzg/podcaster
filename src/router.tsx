@@ -19,7 +19,7 @@ export function Router() {
         {
           path: '/podcast/:id',
           element: <PodcastDetail />,
-        }
+        },
       ],
     },
   ]);

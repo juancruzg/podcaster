@@ -15,7 +15,7 @@ const podcastListDTOTransform = (podcast: PodcastDTO): PodcastItem => ({
   author: podcast?.['im:artist']?.label,
   name: podcast?.title?.label,
   imageURL: podcast?.['im:image'].reduce((previous, current) =>
-    previous.attributes.height < current.attributes.height ? previous : current,
+    parseInt(previous.attributes.height, 10) > parseInt(current.attributes.height, 10) ? previous : current,
   )?.label,
 });
 

@@ -25,7 +25,7 @@ export function PodcastDetail() {
   }, [id]);
 
   if (!podcast) {
-    return null;
+    return <span>Loading...</span>;
   }
 
   return (
