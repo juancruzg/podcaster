@@ -1,4 +1,6 @@
 .header {
+  display: flex;
+  justify-content: space-between;
   border-bottom: 1px solid $color-silver;
   padding: 1rem 0;
   margin: 0;

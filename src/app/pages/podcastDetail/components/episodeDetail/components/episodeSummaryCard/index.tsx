@@ -19,7 +19,7 @@ export function EpisodeSummaryCard({ title, description, previewURL }: EpisodeSu
     <Card className="episode-detail-card">
       <section className="episode-detail-card__section">
         <h2 className="episode-detail-card__section__title">{title}</h2>
-        <span
+        <p
           className="episode-detail-card__section__description"
           dangerouslySetInnerHTML={{ __html: cleanDescription }}
         />
