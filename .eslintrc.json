@@ -40,14 +40,6 @@
     "react/jsx-filename-extension": ["error", { "extensions": [".tsx"] }],
     "import/extensions": ["error", "never"], // error si hay extension
     "react/jsx-uses-vars": "error",
-    "capitalized-comments": [
-      "error",
-      "always",
-      {
-        "ignorePattern": "i18n",
-        "ignoreConsecutiveComments": true
-      }
-    ],
     "spaced-comment": [
       "error",
       "always",

@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { render, screen } from '@testing-library/react';
+import { MemoryRouter } from 'react-router-dom';
 
 import { PodcastSummary, PodcastSummaryProps } from '../../../../../app/pages/components/podcastSummaryCard';
 
@@ -9,6 +10,7 @@ describe('PodcastSummaryCard', () => {
 
   beforeEach(() => {
     props = {
+      podcastId: '1',
       author: 'author',
       description: 'description',
       image: {
@@ -21,7 +23,16 @@ describe('PodcastSummaryCard', () => {
 
   test('renders podcast summary card as default', () => {
     render(
-      <PodcastSummary author={props.author} description={props.description} image={props.image} title={props.title} />,
+      <PodcastSummary
+        podcastId={props.podcastId}
+        author={props.author}
+        description={props.description}
+        image={props.image}
+        title={props.title}
+      />,
+      {
+        wrapper: MemoryRouter,
+      },
     );
 
     const image = screen.getByAltText('alt-img');
