@@ -2,7 +2,7 @@ import React from 'react';
 
 import { fireEvent, screen, render } from '@testing-library/react';
 
-import { Searchbox } from '../../../../../../app/pages/home/components/searchBox';
+import { Searchbox } from '../../../../../../app/pages/home/components/searchbox';
 
 describe('SearchBox', () => {
   beforeAll(() => {

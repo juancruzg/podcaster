@@ -7,7 +7,7 @@ import { LevelEnum } from '../../enums/LevelEnum';
 import { PodcastItem } from '../../models/podcastItem';
 import { getAllPodcasts } from '../../services/podcastService';
 import { Badge } from './components/badge';
-import { Searchbox } from './components/searchBox';
+import { Searchbox } from './components/searchbox';
 
 export function Home() {
   const [podcasts, setPodcasts] = useState<PodcastItem[]>();
