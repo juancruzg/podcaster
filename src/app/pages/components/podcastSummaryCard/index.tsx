@@ -1,4 +1,7 @@
+/* eslint-disable react/no-danger */
 import React from 'react';
+
+import { sanitize } from 'dompurify';
 
 import { Card } from '../../../components/card';
 import { ImageTypeEnum } from '../../../enums/ImageTypeEnum';
@@ -15,6 +18,8 @@ export interface PodcastSummaryProps {
 }
 
 export function PodcastSummary({ podcastId, author, description, image, title }: PodcastSummaryProps) {
+  const cleanDescription = sanitize(description, { USE_PROFILES: { html: true } });
+
   return (
     <Card
       smallPadding
@@ -33,7 +38,10 @@ export function PodcastSummary({ podcastId, author, description, image, title }:
       <hr className="podcast-summary__separator" />
       <div className="podcast-summary__secondary-detail">
         <h3 className="podcast-summary__secondary-detail__title">Description:</h3>
-        <p className="podcast-summary__secondary-detail__description">{description}</p>
+        <p
+          className="podcast-summary__secondary-detail__description"
+          dangerouslySetInnerHTML={{ __html: cleanDescription }}
+        />
       </div>
     </Card>
   );
