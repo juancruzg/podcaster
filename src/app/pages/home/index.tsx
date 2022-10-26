@@ -18,8 +18,8 @@ export function Home() {
         setPodcasts(podcastsResponse.podcasts);
         setCount(podcastsResponse.count);
       })
-      .catch(() => {
-        // TODO: Handle error
+      .catch((error) => {
+        console.error('Something went wrong:', error);
       });
   }, []);
 

@@ -1,4 +1,10 @@
-import { formatDate, millisToHoursMinutesAndSeconds, millisToMinutesAndSeconds, millisToTime, padTo2Digits } from '../../../app/utils/date';
+import {
+  formatDate,
+  millisToHoursMinutesAndSeconds,
+  millisToMinutesAndSeconds,
+  millisToTime,
+  padTo2Digits,
+} from '../../../app/utils/date';
 
 describe('Date', () => {
   describe('padTo2Digits', () => {

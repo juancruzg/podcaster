@@ -3,6 +3,7 @@ import axios from 'axios';
 import { EntityTypeEnum } from '../enums/EntityTypeEnum';
 import { EpisodeDetail, GetPodcastDTO, PodcastDetail } from '../models/dto/getPodcastDTO';
 import { PodcastDTO, PodcastsDTO } from '../models/dto/getPodcastsDTO';
+import { Episode } from '../models/episode';
 import { GetPodcastsResponse } from '../models/getPodcastsResponse';
 import { Podcast } from '../models/podcast';
 import { PodcastItem } from '../models/podcastItem';
@@ -26,7 +27,7 @@ export const getAllPodcasts = async (searchText?: string): Promise<GetPodcastsRe
   let podcasts: PodcastItem[];
 
   if (!podcastsFromStorage) {
-    const response = await axios.get<PodcastsDTO>('us/rss/toppodcasts/limit=100/genre=1310/json');
+    const response = await axios.get<PodcastsDTO>('/us/rss/toppodcasts/limit=100/genre=1310/json');
 
     podcasts = response.data.feed.entry.map<PodcastItem>(podcastListDTOTransform);
 
@@ -68,11 +69,8 @@ const podcastDTOTransform = async (getPodcastDTO: GetPodcastDTO): Promise<Podcas
   }
 
   // Get podcast feed (as XML).
-  const feed = await axios.get('raw', {
-    baseURL: 'https://api.allorigins.win',
-    params: {
-      url: podcastDetail.feedUrl,
-    },
+  const feed = await axios.get(`/${podcastDetail.feedUrl}`, {
+    baseURL: 'https://cors-anywhere.herokuapp.com/',
   });
 
   return {
@@ -83,11 +81,13 @@ const podcastDTOTransform = async (getPodcastDTO: GetPodcastDTO): Promise<Podcas
     description: getDescriptionFromXML(feed.data),
     episodes: (
       getPodcastDTO.results.filter((entity) => entity.kind === EntityTypeEnum.PODCAST_EPISODE) as EpisodeDetail[]
-    ).map((episode) => ({
+    ).map<Episode>((episode) => ({
       id: episode.trackId,
       date: episode.releaseDate,
       duration: episode.trackTimeMillis,
       title: episode.trackName,
+      description: episode.description,
+      previewURL: episode.previewUrl,
     })),
   };
 };
@@ -101,10 +101,12 @@ export const getPodcast = async (id: string): Promise<Podcast> => {
   }
 
   // Execute the lookup to retrieve podcast details and episodes.
-  const response = await axios.get('raw', {
-    baseURL: 'https://api.allorigins.win',
+  const response = await axios.get('/lookup', {
     params: {
-      url: `https://itunes.apple.com/lookup?id=${id}&media=podcast&entity=podcastEpisode&limit=100`,
+      id,
+      media: 'podcast',
+      entity: 'podcastEpisode',
+      limit: 100,
     },
   });
 

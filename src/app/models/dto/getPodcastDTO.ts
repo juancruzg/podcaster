@@ -17,6 +17,8 @@ export interface EpisodeDetail extends EntityDetail {
   trackName: string;
   trackTimeMillis: number;
   releaseDate: string;
+  description: string;
+  previewUrl: string;
 }
 
 export interface GetPodcastDTO {

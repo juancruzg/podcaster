@@ -13,7 +13,9 @@
 @import './app/pages/home/components/badge/index.scss';
 
 @import './app/pages/podcastDetail/index.scss';
-@import './app/pages/podcastDetail/components/episodesTable/index.scss';
+@import './app/pages/podcastDetail/components/episodesOverview/index.scss';
+@import './app/pages/podcastDetail/components/episodesOverview/components/episodesTable/index.scss';
+@import './app/pages/podcastDetail/components/episodeDetail/components/episodeSummaryCard/index.scss';
 
 body {
   margin: 0;

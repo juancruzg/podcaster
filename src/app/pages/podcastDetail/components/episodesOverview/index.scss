@@ -1,0 +1,16 @@
+.podcast-detail-episodes {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1rem;
+
+  &__title__card {
+    @include body-l;
+    @include text-semibold;
+  
+    padding: 0.5rem 1rem;
+  }
+
+  &__card {
+    padding: 0.5rem 1rem;
+  }
+}

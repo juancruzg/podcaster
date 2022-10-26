@@ -2,8 +2,8 @@ import React from 'react';
 
 import { Link } from 'react-router-dom';
 
-import { Episode } from '../../../../models/episode';
-import { formatDate, millisToTime } from '../../../../utils/date';
+import { Episode } from '../../../../../../models/episode';
+import { formatDate, millisToTime } from '../../../../../../utils/date';
 
 export interface EpisodesTableProps {
   episodes: Episode[];
