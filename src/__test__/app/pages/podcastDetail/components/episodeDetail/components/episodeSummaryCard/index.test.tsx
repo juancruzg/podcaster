@@ -2,7 +2,10 @@ import React from 'react';
 
 import { render, screen } from '@testing-library/react';
 
-import { EpisodeSummaryCard, EpisodeSummaryCardProps } from '../../../../../../../../app/pages/podcastDetail/components/episodeDetail/components/episodeSummaryCard';
+import {
+  EpisodeSummaryCard,
+  EpisodeSummaryCardProps,
+} from '../../../../../../../../app/pages/podcastDetail/components/episodeDetail/components/episodeSummaryCard';
 
 describe('EpisodeSummaryCard', () => {
   let props: EpisodeSummaryCardProps;
@@ -12,7 +15,7 @@ describe('EpisodeSummaryCard', () => {
       description: 'description',
       previewURL: 'https://preview.com/test',
       title: 'title',
-    }
+    };
   });
 
   test('renders episode summary card component', async () => {

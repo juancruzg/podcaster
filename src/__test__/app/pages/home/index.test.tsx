@@ -2,6 +2,7 @@ import React from 'react';
 
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 
+import LoaderProvider from '../../../../app/contexts/loaderContext';
 import { GetPodcastsResponse } from '../../../../app/models/getPodcastsResponse';
 import { Home } from '../../../../app/pages/home';
 import { getAllPodcasts } from '../../../../app/services/podcastService';
@@ -36,7 +37,11 @@ describe('Home', () => {
   });
 
   test('renders home component', async () => {
-    const { container } = render(<Home />);
+    const { container } = render(
+      <LoaderProvider isLoading>
+        <Home />
+      </LoaderProvider>,
+    );
 
     expect(container).not.toBeEmptyDOMElement();
 
@@ -55,7 +60,11 @@ describe('Home', () => {
       ),
     );
 
-    render(<Home />);
+    render(
+      <LoaderProvider isLoading>
+        <Home />
+      </LoaderProvider>,
+    );
 
     await waitFor(() => {
       expect(screen.getByText('0')).toBeInTheDocument();
@@ -63,7 +72,11 @@ describe('Home', () => {
   });
 
   test('executes search', async () => {
-    render(<Home />);
+    render(
+      <LoaderProvider isLoading>
+        <Home />
+      </LoaderProvider>,
+    );
 
     const textBox = screen.getByPlaceholderText('Filter podcasts...');
 
@@ -77,7 +90,11 @@ describe('Home', () => {
   test('should not render when getAllPodcasts throws an error', async () => {
     (getAllPodcasts as jest.Mock).mockImplementation(jest.fn(() => Promise.reject(new Error('test error'))));
 
-    render(<Home />);
+    render(
+      <LoaderProvider isLoading>
+        <Home />
+      </LoaderProvider>,
+    );
 
     await waitFor(() => {
       expect(global.console.error).toHaveBeenCalled();

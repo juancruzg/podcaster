@@ -2,12 +2,14 @@ import React, { useEffect, useState } from 'react';
 
 import { Outlet, useParams } from 'react-router-dom';
 
+import { useLoaderContext } from '../../contexts/loaderContext';
 import { Podcast } from '../../models/podcast';
 import { getPodcast } from '../../services/podcastService';
 import { PodcastSummary } from '../components/podcastSummaryCard';
 
 export function PodcastDetail() {
   const { podcastId } = useParams();
+  const { setIsLoading } = useLoaderContext();
   const [podcast, setPodcast] = useState<Podcast>();
 
   if (!podcastId) {
@@ -15,13 +17,15 @@ export function PodcastDetail() {
   }
 
   useEffect(() => {
+    setIsLoading(true);
     getPodcast(podcastId)
       .then((podcastResponse) => setPodcast(podcastResponse))
       .catch((error) => {
         // eslint-disable-next-line no-console
         console.error('Something went wrong:', error);
-      });
-  }, [podcastId]);
+      })
+      .finally(() => setIsLoading(false));
+  }, [podcastId, setIsLoading]);
 
   if (!podcast) {
     return <span>Loading...</span>;
