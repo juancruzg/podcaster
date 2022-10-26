@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 import { Card } from '../../components/card';
+import { useLoaderContext } from '../../contexts/loaderContext';
 import { ImageTypeEnum } from '../../enums/ImageTypeEnum';
 import { LevelEnum } from '../../enums/LevelEnum';
 import { PodcastItem } from '../../models/podcastItem';
@@ -11,17 +12,22 @@ import { Searchbox } from './components/searchBox';
 export function Home() {
   const [podcasts, setPodcasts] = useState<PodcastItem[]>();
   const [count, setCount] = useState<number>(0);
+  const { setIsLoading } = useLoaderContext();
 
   useEffect(() => {
+    setIsLoading(true);
+
     getAllPodcasts()
       .then((podcastsResponse) => {
         setPodcasts(podcastsResponse.podcasts);
         setCount(podcastsResponse.count);
       })
       .catch((error) => {
+        // eslint-disable-next-line no-console
         console.error('Something went wrong:', error);
-      });
-  }, []);
+      })
+      .finally(() => setIsLoading(false));
+  }, [setIsLoading]);
 
   const handleSearch = (searchText: string) => {
     getAllPodcasts(searchText).then((podcastsResponse) => {

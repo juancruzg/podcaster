@@ -3,6 +3,7 @@ import React from 'react';
 import { render, screen, waitFor } from '@testing-library/react';
 import { MemoryRouter, useParams } from 'react-router-dom';
 
+import LoaderProvider from '../../../../app/contexts/loaderContext';
 import { Podcast } from '../../../../app/models/podcast';
 import { PodcastDetail } from '../../../../app/pages/podcastDetail';
 import { getPodcast } from '../../../../app/services/podcastService';
@@ -49,7 +50,12 @@ describe('PodcastDetail', () => {
   test('renders podcastDetail component', async () => {
     (useParams as jest.Mock).mockImplementation(() => ({ podcastId: '1' }));
 
-    const { container } = render(<PodcastDetail />, { wrapper: MemoryRouter });
+    const { container } = render(
+      <LoaderProvider isLoading>
+        <PodcastDetail />
+      </LoaderProvider>,
+      { wrapper: MemoryRouter },
+    );
 
     expect(container).not.toBeEmptyDOMElement();
 
@@ -62,7 +68,12 @@ describe('PodcastDetail', () => {
     (useParams as jest.Mock).mockImplementation(() => ({ podcastId: '1' }));
     (getPodcast as jest.Mock).mockImplementation(jest.fn(() => Promise.resolve<null>(null)));
 
-    render(<PodcastDetail />, { wrapper: MemoryRouter });
+    render(
+      <LoaderProvider isLoading>
+        <PodcastDetail />
+      </LoaderProvider>,
+      { wrapper: MemoryRouter },
+    );
 
     await waitFor(() => {
       expect(screen.getByText('Loading...')).toBeInTheDocument();
@@ -73,7 +84,14 @@ describe('PodcastDetail', () => {
     (getPodcast as jest.Mock).mockImplementation(jest.fn(() => Promise.resolve<null>(null)));
     (useParams as jest.Mock).mockImplementation(() => ({ podcastId: null }));
 
-    expect(() => render(<PodcastDetail />, { wrapper: MemoryRouter })).toThrow('podcastId is a required path param');
+    expect(() =>
+      render(
+        <LoaderProvider isLoading>
+          <PodcastDetail />
+        </LoaderProvider>,
+        { wrapper: MemoryRouter },
+      ),
+    ).toThrow('podcastId is a required path param');
   });
 
   test('should not render when getPodcast throws an error', async () => {
@@ -82,7 +100,12 @@ describe('PodcastDetail', () => {
     (getPodcast as jest.Mock).mockImplementation(jest.fn(() => Promise.reject(new Error('test error'))));
     (useParams as jest.Mock).mockImplementation(() => ({ podcastId: '1' }));
 
-    render(<PodcastDetail />, { wrapper: MemoryRouter });
+    render(
+      <LoaderProvider isLoading>
+        <PodcastDetail />
+      </LoaderProvider>,
+      { wrapper: MemoryRouter },
+    );
 
     await waitFor(() => {
       expect(global.console.error).toHaveBeenCalled();
