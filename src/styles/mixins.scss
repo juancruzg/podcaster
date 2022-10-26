@@ -12,6 +12,12 @@
   font-size: $title-font-size-l;
   line-height: $line-height-xxl;
 }
+
+@mixin title-m {
+  @include base-font;
+  font-size: $title-font-size-m;
+  line-height: $line-height-xl;
+}
   
 @mixin body-l {
   @include base-font;

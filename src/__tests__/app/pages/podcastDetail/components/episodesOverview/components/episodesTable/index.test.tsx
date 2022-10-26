@@ -3,7 +3,10 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 
-import { EpisodesTable, EpisodesTableProps } from '../../../../../../app/pages/podcastDetail/components/episodesTable';
+import {
+  EpisodesTable,
+  EpisodesTableProps,
+} from '../../../../../../../../app/pages/podcastDetail/components/episodesOverview/components/episodesTable';
 
 describe('EpisodesTable', () => {
   let props: EpisodesTableProps;
@@ -16,12 +19,16 @@ describe('EpisodesTable', () => {
           duration: 20000,
           id: '1',
           title: 'Episode 1',
+          description: 'description 1',
+          previewURL: 'https://preview.com/test1.mp3',
         },
         {
           date: '2022-05-19 15:00:00.000',
           duration: 30000,
           id: '2',
           title: 'Episode 2',
+          description: 'description 2',
+          previewURL: 'https://preview.com/test2.mp3',
         },
       ],
     };

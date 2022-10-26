@@ -9,7 +9,11 @@ import { getAllPodcasts } from '../../../../app/services/podcastService';
 jest.mock('../../../../app/services/podcastService');
 
 describe('Home', () => {
+  const originalConsoleError = global.console.error;
+
   beforeEach(() => {
+    global.console = { ...global.console, error: jest.fn() };
+
     (getAllPodcasts as jest.Mock).mockImplementation(
       jest.fn(() =>
         Promise.resolve<GetPodcastsResponse>({
@@ -25,6 +29,10 @@ describe('Home', () => {
         }),
       ),
     );
+  });
+
+  afterAll(() => {
+    global.console = { ...global.console, error: originalConsoleError };
   });
 
   test('renders home component', async () => {
@@ -63,6 +71,16 @@ describe('Home', () => {
 
     await waitFor(() => {
       expect(getAllPodcasts).toHaveBeenCalled();
+    });
+  });
+
+  test('should not render when getAllPodcasts throws an error', async () => {
+    (getAllPodcasts as jest.Mock).mockImplementation(jest.fn(() => Promise.reject(new Error('test error'))));
+
+    render(<Home />);
+
+    await waitFor(() => {
+      expect(global.console.error).toHaveBeenCalled();
     });
   });
 });

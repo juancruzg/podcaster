@@ -4,6 +4,7 @@ import { Card } from '../../../components/card';
 import { ImageTypeEnum } from '../../../enums/ImageTypeEnum';
 
 export interface PodcastSummaryProps {
+  podcastId: string;
   image: {
     alt: string;
     src: string;
@@ -13,10 +14,11 @@ export interface PodcastSummaryProps {
   description: string;
 }
 
-export function PodcastSummary({ author, description, image, title }: PodcastSummaryProps) {
+export function PodcastSummary({ podcastId, author, description, image, title }: PodcastSummaryProps) {
   return (
     <Card
       smallPadding
+      href={`/podcast/${podcastId}`}
       image={{
         alt: image.alt,
         src: image.src,

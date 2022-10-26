@@ -40,7 +40,7 @@ describe('Card', () => {
 
     expect(image).toBeInTheDocument();
     expect(image).toHaveProperty('src', 'https://test.com/test.png');
-    expect(screen.getByTestId('card-image-container')).toHaveClass('card__image--circle')
+    expect(screen.getByTestId('card-image-container')).toHaveClass('card__image--circle');
   });
 
   test('renders with an image as square', () => {
@@ -60,6 +60,6 @@ describe('Card', () => {
 
     expect(image).toBeInTheDocument();
     expect(image).toHaveProperty('src', 'https://test.com/test.png');
-    expect(screen.getByTestId('card-image-container')).toHaveClass('card__image--square')
+    expect(screen.getByTestId('card-image-container')).toHaveClass('card__image--square');
   });
 });
